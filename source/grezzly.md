@@ -98,3 +98,37 @@ bears = DataBlock(
 
 >&nbsp;&nbsp;item_tfms=Resize(128)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アイテム変換を行い、画像を128pxにリサイズする
+
+次にデータの水増しを行っていきます。aug_transforms関数を使用し、自動で回転や反転、コンストラクトの変更などを行ってくれる。
+```python3
+bears = bears.new(
+    item_tfms=RandomResizedCrop(224, min_scale=0.5),
+    batch_tfms=aug_transforms())
+dls = bears.dataloaders(path)
+```
+
+##訓練
+データ収集から加工をやってきました。長いね。
+やっと、モデルの訓練をすることができます。
+```python3
+learn = vision_learner(dls, resnet18, metrics=error_rate)
+learn.fine_tune(4)
+```
+これを実行すると、4エポックの結果が出力されると思います。  
+次に、どのように間違っているのか可視化してみましょう。
+```python3
+from fastai.vision import learner
+interp = ClassificationInterpretation.from_learner(learn)
+interp.plot_confusion_matrix()
+```
+横軸が予測、縦軸が正解を表します。  
+最後に画像のロスの高い順に並べてみましょう。
+```python3
+interp.plot_top_losses(5, nrows=1)
+```
+左から予測した値、実際のラベル、ロス、確率が出ています。　　
+
+### 最後に
+お疲れさまでした。
+長々と書いてきましたが、特に難しいことをしているわけではないことに気づいたではないでしょうか。  
+このぐらいの画像分類だったら、自分でいろいろとできると思うのでやってみるといいと思います。  
