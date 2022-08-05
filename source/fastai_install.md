@@ -1,9 +1,10 @@
 ---
-title: fastaiを使えるようにしよう
+title: fastaiをインストールしよう
 date: 2022-08-05
-tags: ["fastai]
-excerpt: テスト
+tags: ["fastai"]
+excerpt: これは抜粋です。
 ---
+
 
 # fastaiを使えるようになろう
 
