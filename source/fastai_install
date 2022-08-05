@@ -1,3 +1,10 @@
+---
+title: fastaiを使えるようにしよう
+date: 2022-08-05
+tags: ["fastai]
+except: テスト
+---
+
 # fastaiを使えるようになろう
 
 ここでは、fastaiのインストールの仕方をGPUとCPUそれぞれ使う場合に分けて、解説していきます。
