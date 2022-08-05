@@ -2,7 +2,7 @@
 title: fastaiを使えるようにしよう
 date: 2022-08-05
 tags: ["fastai]
-except: テスト
+excerpt: テスト
 ---
 
 # fastaiを使えるようになろう
